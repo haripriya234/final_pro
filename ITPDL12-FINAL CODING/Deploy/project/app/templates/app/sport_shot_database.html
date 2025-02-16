@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<!-- component -->
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+
+<!-- <div class="grid grid-cols-12 md:grid-cols-8 gap-4">
+  {% for model in models %} 
+  <div>
+    <ol>
+      <li><img class="h-auto max-w-full rounded-lg" src="{{ model.image.url }}" alt="Image"></li>
+    </ol>    
+  </div>
+  {% endfor %}
+  
+</div> -->
+
+<!-- title -->
+<div class="text-center p-10">
+  <h1 class="font-bold text-4xl mb-4">This is the Result database</h1>
+  <h1 class="text-3xl">Result</h1>
+</div>
+
+
+<section class="w-fit mx-auto grid grid-cols-12 lg:grid-cols-4 md:grid-cols-4 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+
+  {% for model in models %}
+  <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">  
+    
+      
+      <img src="{{ model.image.url }}" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+      <div class="px-4 py-3 w-72">
+        <span class="text-gray-400 mr-3 uppercase text-xs">Type of the shot</span>
+        <p class="text-lg font-bold text-black truncate block capitalize">{{ model.label }}</p>
+        <div class="flex items-center">
+          <p class="text-lg font-semibold text-black cursor-auto my-3">Sports Domain</p>
+          
+          <div class="ml-auto"></div>
+        </div>
+      </div>
+   
+   
+  </div>
+  {% endfor %}
+
+  
+</section>
+
+<script>
+  
+
+kofiWidgetOverlay.draw("mohamedghulam", {
+  type: "floating-chat",
+  "floating-chat.donateButton.text": "Support me",
+  "floating-chat.donateButton.background-color": "#323842",
+  "floating-chat.donateButton.text-color": "#fff"
+});
+
+</script>
+    
+</section>
+{% endblock content %}
+  

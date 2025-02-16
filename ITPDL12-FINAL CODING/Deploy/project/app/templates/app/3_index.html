@@ -1,0 +1,238 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+   <title>Viajar é Preciso</title>
+  <!-- LINKS BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- ICONES -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+
+
+  <!-- Modal CONTATO-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Contato</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Nome</label>
+            <input type="name" class="form-control" id="exampleFormControlInput2" placeholder="Jessica Ferraz">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="inputPhone" class="form-label">Telefone</label>
+            <input type="number" class="form-control" id="inputPhone" placeholder="(__)________">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+              placeholder="Escreva sua mensagem."></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <header class="container my-4">
+    <div class="row">
+      <!-- vai ocupar todo o espaço se a tela for pequena -->
+      <!-- col-lg-6 para telas grandes -->
+      <div class="col-12 col-lg-6">
+        <h1 class="text-center pt-5 mt-4">Fueling Your Passion for Sports</h1>
+        <p class="lead text-muted text-center text-md mt-4">Preparation Matters</p>
+        <div class="text-center text-md-center">
+          <button type="button" class="btn btn-outline-dark mt-2 ms-4" style="font-size: 2rem;"><a href="#">Explore the advance technology</a> 
+          </button>
+
+        </div>
+
+
+      </div>
+
+      <div class="col-12 col-lg-6 my-4 img-thumbnail">  
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/6BC1/production/_128258572_gettyimages-1435855432.jpg" class="d-block w-100" alt="vitória régiaa">
+            </div>
+            <div class="carousel-item">
+              <img src="data:image/jpeg;base64,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" class="d-block w-100" alt="aurora boreal">
+            </div>
+            <div class="carousel-item">
+              <img src="https://img.olympics.com/images/image/private/t_16-9_640/f_auto/v1668613158/primary/oo36twekciqogi7th0eq" class="d-block w-100" alt="Egito">
+            </div>
+            <div class="carousel-item">
+              <img src="https://reviewed-com-res.cloudinary.com/image/fetch/s--UJ2sGByA--/b_white,c_limit,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_972/https://reviewed-production.s3.amazonaws.com/1597356287543/GettyImages-1171084311.jpg" class="d-block w-100" alt="Ilhas Maldivas">
+            </div>
+            <div class="carousel-item">
+              <img src="https://i.cbc.ca/1.6823771.1682547852!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/boxing-fight-22042023.jpg" class="d-block w-100" alt="Rio de Janeiro">
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.indianexpress.com/2023/08/badminton-1.jpg" class="d-block w-100" alt="Taj Mahal">
+            </div>
+            <div class="carousel-item">
+              <img src="https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/wcyarl2uetszvas1ulma" class="d-block w-100" alt="Times Square">
+            </div>
+            <div class="carousel-item">
+              <img src="https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_md_2x/f_auto/v1536936974/primary/exvzqcvorticinejmmel" class="d-block w-100" alt="Vila na Itália">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2hlc3N8ZW58MHx8MHx8fDA%3D&w=1000&q=80" class="d-block w-100" alt="Vila na Itália">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.toiimg.com/thumb/msid-88022501,width-1280,resizemode-4/88022501.jpg" class="d-block w-100" alt="Vila na Itália">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.tnn.in/thumb/msid-103512683,thumbsize-82078,width-1280,height-720,resizemode-75/103512683.jpg" class="d-block w-100" alt="Vila na Itália">
+            </div>  
+            <div class="carousel-item">
+                <img src="https://static.toiimg.com/photo/msid-79366744/79366744.jpg" class="d-block w-100" alt="Vila na Itália">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_md_2x/f_auto/v1536936974/primary/exvzqcvorticinejmmel" class="d-block w-100" alt="Vila na Itália">
+            </div>   
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </header>
+
+  
+
+
+
+
+
+
+  
+
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+
+</html>
+
+<video class="w-full h-auto max-w-full border border-gray-200 rounded-lg dark:border-gray-700" muted loop autoplay>
+    <source src="/static/videos/sports.mp4" type="video/mp4">
+</video> 
+<!-- Section CARDS -->
+<section class="py-8 py-md-11">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="card  mb-6 mb-md-0" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title text-center text-success" style="font-size: x-large;"><i class="bi bi-globe"></i>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Why important?</h6>
+              <p class="card-text">Sports are important for physical health, promoting teamwork, discipline, and enhancing mental well-being through competition and camaraderie.
+                <br>
+                <br>
+                <br>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 col-md-4">
+          <div class="card mb-6 mb-md-0" style="width: 18rem;">
+            <div class="card-body ">
+              <h5 class="card-title text-center text-success" style="font-size: x-large;"><i class="bi bi-suitcase"></i>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Sports for Economy</h6>
+              <p class="card-text">Sports contribute significantly to the economy by generating revenue through ticket sales, merchandise, and sponsorships, creating jobs in various sectors such as sports management, tourism, and broadcasting, and boosting local businesses and tourism in host cities during major sporting events, thereby stimulating economic growth.
+                entre outros.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 ">
+          <div class="card  mb-6 mb-md-0" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title text-center text-success" style="font-size: x-large;"><i
+                  class="bi bi-telephone"></i>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Why practice important?</h6>
+              <p class="card-text">Practice is essential in sports as it hones skills, builds muscle memory, and enhances performance, enabling athletes to excel and achieve their goals through consistent improvement and mastery of their craft.</p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- REDES SOCIAIS -->
+    <section class=" mt-5 mt-5 pt-8 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+              <div class="text-center px-lg-18 mb-8">
+                <p class="text-sucess"><strong><i class="bi bi-airplane"></i></strong> Adv Ai for sports <i
+                    class="bi bi-globe"></i></strong></p>
+                <p class="mb-0">
+                  @2023 licensed by Adv Ai for sports
+                </p>
+                <div class="mt-4">
+                  <a href="0" class="text-inherit text-success me-3" target="_blank" title="WhatsApp"><i
+                      class="bi bi-whatsapp"></i></a>
+                  <a href="0" class="text-inherit text-success me-3" target="_blank" title="Instagram"><i
+                      class="bi bi-instagram"></i></a>
+                  <a href="0" class="text-inherit text-success me-3" target="_blank" title="Facebook"><i
+                      class="bi bi-facebook"></i></a>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+    
+      </section>
+    
+<script>
+    // altera tem site
+function alterarTemaSite() {
+    let tema = document.querySelector("html").getAttribute("data-bs-theme");
+    if (tema === "dark") {
+        document.querySelector("html").setAttribute("data-bs-theme", "light");
+        document.querySelector("#alterarTemaSite").innerHTML = `<i class="bi bi-moon-fill"></i>`
+    }else{
+        document.querySelector("html").setAttribute("data-bs-theme", "dark");
+        document.querySelector("#alterarTemaSite").innerHTML = `<i class="bi bi-brightness-high-fill""></i>`
+    }
+
+}
+</script>
+{% endblock content %}

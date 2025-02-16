@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src= "https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<style>
+    .card-container * {
+        box-sizing: border-box;
+    }
+    .card-container {
+        background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKM6rRET9CTBdVhMPRZIYaT3fHRVVEoIAZ9D3lR9da2ZlTlRdoK1X7E9mOcp7cNWP912Cq-fkhmdpD6byoX5EoDNkOHaoZa0xKcOx-ccCWxNU8Mr9TabV6dnRPqdhMD4T0EwbcX0Alxp9Z-85RRY_T8fynoHjQI38wuQcnTfwJL88JiGYW2x6jkmDR/s1600/bg-new-1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        height: 740px;
+        overflow: hidden;
+        position: relative;
+        margin: 20px 0;
+    }
+    .card {
+        perspective: 1500px;
+        position: absolute;
+        left: calc(50% - 175px);
+        top: calc(50% - 250px);
+        transition-property: transform;
+        transition-duration: 1s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition-delay: initial;
+        transform: rotate(-10deg) translate(0, 0);
+        animation: cardIn 1s alternate cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    }
+    .card:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 50px #000;
+        transition: all 0.5s ease-in-out;
+    }
+    .card.is-opened {
+        transform: rotate(0deg) translate(175px, 0);
+    }
+    .card.is-opened .cart-page-front {
+        transform: rotateY(-180deg);
+    }
+    @keyframes cardIn {
+        0% {
+            opacity: 0;
+            transform: rotate(-10deg) translate(0, -100%);
+        }
+        25% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            transform: rotate(-10deg) translate(0, 0);
+        }
+    }
+    .card,
+    .card-page {
+        width: 350px;
+        height: 500px;
+    }
+    .card-page {
+        transition: transform 1s ease-in-out;
+        cursor: pointer;
+        position: absolute;
+        outline: 1px solid transparent;
+    }
+    .cart-page-front {
+        transform-origin: 0 50% 0;
+        transform-style: preserve-3d;
+        transform: rotateY(-20deg);
+        z-index: 2;
+    }
+    .cart-page-outside,.cart-page-inside {
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+    }
+    .cart-page-outside {
+        border: 10px solid #fbfbfb;
+        background-color: #c72320;
+        background-image: url("https://img.freepik.com/premium-photo/sports-gear-generative-ai_431161-5076.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+    @media (max-width: 767px) {
+        .cart-page-outside {
+            border: 5px solid #fbfbfb;
+        }
+    }
+    .cart-page-inside,
+    .cart-page-bottom {
+        background-color: #d4d1d0;
+        background-image: url("");
+        border: 20px solid #d4d1d0;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .cart-page-inside {
+        transform: rotateY(-180deg);
+        border-right: none !important;
+        background-position: 0px 80px;
+    }
+    .cart-page-bottom {
+        z-index: 1;
+        border-left: none !important;
+        background-position: -22px 80px;
+        font-size: 18px;
+    }
+    .cart-page-bottom p {
+        line-height: 1.4;
+    }
+    .cards {
+        transform: rotate(-10deg);
+    }
+    .cards img {
+        width: 300px;
+        height: auto;
+    }
+    @media (max-width: 767px) {
+        .card-container {
+            height: 500px;
+        }
+        .card {
+            left: calc(50% - 115px);
+            top: calc(50% - 164.5px);
+        }
+        .card.is-opened {
+            transform: rotate(0deg) translate(115px, 0);
+        }
+        .card,
+        .card-page {
+            width: 230px;
+            height: 329px;
+        } 
+        .cart-page-inside,
+        .cart-page-bottom {
+            border: 10px solid #d4d1d0;
+        }    
+        .cart-page-inside {
+            background-position: 0px 30px;    
+        } 
+        .cart-page-bottom {
+            background-position: 85px 30px;
+            font-size: 11px;
+        }  
+        .cards img {
+            width: 180px;
+        }
+    }
+    @media (max-width: 479px) {
+        .card-container {
+            height: 300px;
+        }
+        .card {
+            left: calc(50% - 75px);
+            top: calc(50% - 107px);
+        }
+        .card.is-opened {
+            transform: rotate(0deg) translate(75px, 0);
+        } 
+        .card,
+        .card-page {
+            width: 150px;
+            height: 214px;
+        } 
+        .cart-page-inside {
+            background-position: 0px 30px;
+        } 
+        .cart-page-bottom p {
+            line-height: 1;
+        }    
+        .cart-page-bottom {
+            background-position: 0px 30px;
+            font-size: 10px;
+        }  
+        .cards img {
+            width: 130px;
+        }
+    }
+</style>
+
+<body class="font-[Poppins] bg-gradient-to-tl from-yellow-400 via-sky-700 to-yellow-600 bg-cover h-screen">
+    <header class="bg-gradient-to-r from-slate-300 to-slate-500">
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+                <img class="w-20" src="/static/images/marvel.svg" alt="">
+            </div>
+            <div class="">
+                <ul class=" flex items-center gap-[4vw]">
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'home' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>    
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'info' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                            </svg>
+                        </a>
+                    </li>
+                    
+                    <li>
+                            <a class="hover:text-gray-500" href="{% url 'team' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                                </svg>    
+                            </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'player_information' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                            </svg>
+                              
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url "player_dashboard" %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
+                            </svg>
+                                
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url "sport_shot_database" %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+                            </svg>
+                                
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url "sport_database" %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+                            </svg>
+                                
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'sport_shot_model' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                            </svg>  
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'sport_model' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                            </svg>  
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <p class=" hover:text-red-400 mx-12">Hi {{ user.email }}</p>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+            <div>
+                <p></p>
+                <button class="bg-[#a6c1ea] text-black px-5 py-2 rounded-full hover:bg-[#87acec]" ><a href="{% url 'userlogin' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                    </svg>
+                </a></button>
+            </div>
+            {% endif %}
+            
+        </nav>
+    </header>
+    <center><h1 style="font-size: x-large; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Results for Sports classification</h1></center>
+    {% if obj %}
+    {% if predict == 'badminton' %}
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Badminton originated in British India.<br>
+                    <span style="color: green;">Importance</span>It's important for agility and reflexes<br>
+                    <span style="color: green;">Best Country</span> China dominates badminton.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Lin Dan is a legendary player in badminton<br>
+                    <span style="color: green;">Significant Event:</span>The All England Open Badminton Championships is a prestigious tournament.<br>
+                    <span style="color: green;">Notable Female Player</span>Tai Tzu-ying is a renowned female badminton player from Taiwan.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'basketball' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Basketball was invented in the United States.<br>
+                    <span style="color: green;">Importance</span>It's vital for team coordination and agility.<br>
+                    <span style="color: green;">Best Country</span> The USA is a basketball powerhouse.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span>  Michael Jordan is an iconic figure in basketball.<br>
+                    <span style="color: green;">Significant Event:</span>The NBA Finals is one of the most significant basketball events, where the best teams compete for the NBA championship..<br>
+                    <span style="color: green;">Notable Female Player</span>Lisa Leslie, a former WNBA player, is considered one of the greatest female basketball players, known for her contributions to the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'boxing' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Boxing has ancient origins, with roots in Greece and Rome.<br>
+                    <span style="color: green;">Importance</span>It's crucial for self-defense, discipline, and physical fitness.<br>
+                    <span style="color: green;">Best Country</span> The United States has a strong boxing tradition.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span>  Muhammad Ali is celebrated as one of the greatest boxers.<br>
+                    <span style="color: green;">Significant Event:</span>The "Fight of the Century" between Ali and Joe Frazier is iconic.<br>
+                    <span style="color: green;">Notable Female Player</span>Claressa Shields is a dominant female boxer in modern times.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'chess' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Chess originated in India during the Gupta Empire (6th to 7th century).<br>
+                    <span style="color: green;">Importance</span>Chess is significant for strategic thinking, mental acuity, and competitive play.<br>
+                    <span style="color: green;">Best Country</span>  Russia has a strong chess tradition and has produced many world champions.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Garry Kasparov is widely regarded as one of the greatest chess players in history.<br>
+                    <span style="color: green;">Significant Event:</span>The World Chess Championship is the most prestigious event in chess.<br>
+                    <span style="color: green;">Notable Female Player</span>Judit Polgár is one of the strongest female chess players and has competed at the highest level.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'cricket' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Cricket has its origins in England, dating back to the 16th century.<br>
+                    <span style="color: green;">Importance</span>Cricket is significant for sportsmanship, strategy, and a global fanbase.<br>
+                    <span style="color: green;">Best Country</span> India is a cricket powerhouse and home to passionate fans.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> The ICC Cricket World Cup is a major international cricket tournament.<br>
+                    <span style="color: green;">Significant Event:</span>The All England Open Badminton Championships is a prestigious tournament.<br>
+                    <span style="color: green;">Notable Female Player</span>Mithali Raj is a prominent female cricketer, known for her achievements in women's cricket.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'fencing' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Fencing traces its roots to European swordsmanship traditions.<br>
+                    <span style="color: green;">Importance</span>Fencing is vital for agility, reflexes, and competitive dueling.<br>
+                    <span style="color: green;">Best Country</span> Italy has a strong fencing tradition and has produced many champions.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span>  Épée fencer Éric Srecki from France is celebrated for his success.<br>
+                    <span style="color: green;">Significant Event:</span> The Olympic fencing competition is one of the sport's most prestigious events.<br>
+                    <span style="color: green;">Notable Female Player</span>Laura Flessel-Colovic is a prominent female fencer from France.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'football' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Football has ancient origins, with variations played in various cultures.<br>
+                    <span style="color: green;">Importance</span> Football is the world's most popular sport, promoting teamwork and athleticism.<br>
+                    <span style="color: green;">Best Country</span>Brazil is renowned for its football tradition and success..<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Pelé is often considered one of the greatest football players in history.<br>
+                    <span style="color: green;">Significant Event:</span>The FIFA World Cup is the premier international football tournament..<br>
+                    <span style="color: green;">Notable Female Player</span>Marta Vieira da Silva is an iconic female footballer, known for her contributions to the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'formula1' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Badminton originated in British India.<br>
+                    <span style="color: green;">Importance</span>It's important for agility and reflexes<br>
+                    <span style="color: green;">Best Country</span> China dominates badminton.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Lin Dan is a legendary player in badminton<br>
+                    <span style="color: green;">Significant Event:</span>The All England Open Badminton Championships is a prestigious tournament.<br>
+                    <span style="color: green;">Notable Female Player</span>Marta Vieira da Silva is an iconic female footballer, known for her contributions to the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'gymnastics' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Gymnastics has ancient origins, with roots in ancient Greece.<br>
+                    <span style="color: green;">Importance</span>Gymnastics promotes strength, flexibility, balance, and artistic expression.<br>
+                    <span style="color: green;">Best Country</span> Russia has a strong tradition in artistic gymnastics..<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Simone Biles, from the United States, is widely regarded as one of the greatest gymnasts of all time.<br>
+                    <span style="color: green;">Significant Event:</span>The Olympic Artistic Gymnastics competition is one of the sport's most prestigious events.<br>
+                    <span style="color: green;">Notable Female Player</span>Kohei Uchimura from Japan is known for his excellence in artistic gymnastics.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'hockey' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Hockey has ancient origins, with early variations played in Europe.<br>
+                    <span style="color: green;">Importance</span>Hockey is crucial for team dynamics, speed, and precision.<br>
+                    <span style="color: green;">Best Country</span> Canada is a powerhouse in ice hockey, while India excels in field hockey.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Wayne Gretzky is often considered one of the greatest ice hockey players, and Dhyan Chand is a legend in field hockey.<br>
+                    <span style="color: green;">Significant Event:</span> The Stanley Cup is a prestigious ice hockey tournament, and the Hockey World Cup is significant in field hockey.<br>
+                    <span style="color: green;">Notable Female Player</span>Hayley Wickenheiser is a celebrated female ice hockey player, while Luciana Aymar is known for her excellence in field hockey.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'kabaddi' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Kabaddi has ancient origins, with historical roots in India.<br>
+                    <span style="color: green;">Importance</span>Kabaddi promotes agility, physical strength, and teamwork.<br>
+                    <span style="color: green;">Best Country</span> India is the powerhouse of kabaddi, with a rich tradition and strong teams.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Ajay Thakur is a notable kabaddi player known for his exceptional skills.<br>
+                    <span style="color: green;">Significant Event:</span>The Kabaddi World Cup is a prestigious international kabaddi tournament.<br>
+                    <span style="color: green;">Notable Female Player</span> Mamtha Poojary is a celebrated female kabaddi player, known for her contributions to the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'motogp' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>MotoGP, a premier motorcycle racing championship, has its origins in Europe and dates back to the early 20th century.<br>
+                    <span style="color: green;">Importance</span>MotoGP is vital for showcasing speed, precision, and daring riding skills on two-wheeled machines.<br>
+                    <span style="color: green;">Best Country</span>  Italy and Spain have strong traditions in MotoGP, with a history of producing world-class riders and teams.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span>  Valentino Rossi, known as "The Doctor," is one of the most iconic and successful MotoGP riders.<br>
+                    <span style="color: green;">Significant Event:</span>The MotoGP World Championship is the most prestigious motorcycle racing series, with races held worldwide.<br>
+                    <span style="color: green;">Notable Female Player</span>Ana Carrasco, from Spain, is the first female rider to win a world championship motorcycle race and has made significant contributions to the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'shooting' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Shooting as a sport has roots in hunting and marksmanship, with early competitions held in Europe.<br>
+                    <span style="color: green;">Importance</span>Shooting requires precision, focus, and control, making it vital for developing marksmanship skills and discipline.<br>
+                    <span style="color: green;">Best Country</span>Germany and the United States have strong traditions in competitive shooting and have produced numerous champions.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span>  Alipov Iakov from Russia and Kim Rhode from the United States are renowned for their accomplishments in shooting.<br>
+                    <span style="color: green;">Significant Event:</span>The Summer Olympics features a wide range of shooting disciplines, making it one of the most prestigious events in the sport.<br>
+                    <span style="color: green;">Notable Female Player</span> Kim Rhode, mentioned earlier, is a notable female shooter known for her exceptional achievements in the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'swimming' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Competitive swimming has ancient roots, with evidence of races dating back to ancient Greece and Rome.<br>
+                    <span style="color: green;">Importance</span>Swimming is crucial for fitness, endurance, and water safety skills.<br>
+                    <span style="color: green;">Best Country</span> The United States, Australia, and China have strong swimming traditions and dominant teams.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Michael Phelps, often considered one of the greatest swimmers in history, holds numerous Olympic records.<br>
+                    <span style="color: green;">Significant Event:</span>The Olympic Swimming competition is one of the most prestigious events, attracting the world's best swimmers.<br>
+                    <span style="color: green;">Notable Female Player</span> Katie Ledecky, a highly decorated American swimmer, is celebrated for her accomplishments in the pool.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'table_tennis' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span> Table tennis originated in England as an indoor version of lawn tennis during the late 19th century.<br>
+                    <span style="color: green;">Importance</span>Table tennis is important for reflexes, agility, and hand-eye coordination.<br>
+                    <span style="color: green;">Best Country</span> China is the dominant force in international table tennis, producing numerous world champions.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Ma Long, known as the "Dragon," is often considered one of the greatest table tennis players.<br>
+                    <span style="color: green;">Significant Event:</span>The ITTF World Table Tennis Championships is a prestigious international competition.<br>
+                    <span style="color: green;">Notable Female Player</span>Ding Ning, a Chinese table tennis player, is celebrated for her exceptional skills and achievements in the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'tennis' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Tennis has its origins in 12th-century France and evolved from various racquet and ball games.<br>
+                    <span style="color: green;">Importance</span>Tennis is vital for physical fitness, agility, and mental concentration.<br>
+                    <span style="color: green;">Best Country</span> Switzerland, Spain, and the United States are known for their strong tennis traditions and top players.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Roger Federer, Rafael Nadal, and Novak Djokovic are often considered among the greatest tennis players in history.<br>
+                    <span style="color: green;">Significant Event:</span>Wimbledon, one of the Grand Slam tournaments, is the most prestigious tennis event, held in England.<br>
+                    <span style="color: green;">Notable Female Player</span>Serena Williams, an iconic figure in tennis, has achieved numerous Grand Slam titles and continues to inspire with her success in the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'volleyball' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Volleyball was created in the United States by William G. Morgan in 1895.<br>
+                    <span style="color: green;">Importance</span>Volleyball is significant for teamwork, agility, and net skills.<br>
+                    <span style="color: green;">Best Country</span>  Brazil is known for its dominance in international volleyball, with strong men's and women's teams.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Karch Kiraly, an American player, is celebrated as one of the greatest volleyball players, known for his versatility.<br>
+                    <span style="color: green;">Significant Event:</span>The FIVB Volleyball World Championships is a major international tournament for both men and women.<br>
+                    <span style="color: green;">Notable Female Player</span>Gabrielle Reece, a former American volleyball player, is noted for her achievements and impact on the sport.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'weight_lifting' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Weightlifting has ancient roots, with weightlifting competitions taking place in ancient Greece.<br>
+                    <span style="color: green;">Importance</span>Weightlifting is vital for building strength, power, and muscle mass.<br>
+                    <span style="color: green;">Best Country</span> Russia and China have historically been strong in Olympic weightlifting, producing numerous champions.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Pyrros Dimas, a Greek weightlifter, is celebrated for his three Olympic gold medals and world championships.<br>
+                    <span style="color: green;">Significant Event:</span>The Olympic Weightlifting competition is one of the most prestigious events in the sport.<br>
+                    <span style="color: green;">Notable Female Player</span>Tatiana Kashirina, a Russian weightlifter, is renowned for her strength and accomplishments in women's weightlifting.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'wrestling' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>Wrestling is one of the oldest sports, with historical evidence of its practice in ancient civilizations such as Mesopotamia and Greece.<br>
+                    <span style="color: green;">Importance</span> Wrestling is vital for strength, agility, and combat skills.<br>
+                    <span style="color: green;">Best Country</span>  Russia is traditionally strong in wrestling, with a rich history of success.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> Aleksandr Karelin, a Russian Greco-Roman wrestler, is considered one of the greatest wrestlers in history.<br>
+                    <span style="color: green;">Significant Event:</span>The Wrestling World Championships is a major international competition featuring various wrestling styles.<br>
+                    <span style="color: green;">Notable Female Player</span>Saori Yoshida, a Japanese wrestler, is celebrated for her numerous Olympic gold medals and world championships in women's wrestling.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    {% elif predict == 'wwe' %}
+    <div class="card-container">
+        <div class="card">
+            <div class="card-page cart-page-front">
+                <div class="card-page cart-page-outside"></div>
+                <div class="card-page cart-page-inside">
+                    <span class="cards">
+                        <img alt="" src="{{ obj.image.url }}" />
+                    </span>
+                </div>
+            </div>
+            <div class="card-page cart-page-bottom">
+                <h1>Sport Domain is {{ predict }}</h1>
+                <p>    
+                    <span style="color: green;">Origin:</span>WWE, originally known as the World Wrestling Federation (WWF), was founded in the United States in 1952.<br>
+                    <span style="color: green;">Importance</span>WWE is a global phenomenon, blending sports and entertainment, and is known for its scripted storylines, colorful characters, and dramatic matches.<br>
+                    <span style="color: green;">Best Country</span> Iconic WWE superstars like The Rock, Stone Cold Steve Austin, John Cena, and The Undertaker have achieved legendary status in the wrestling world.<br> 
+                </p>
+                <p>    
+                    <span style="color: green;">BestPlayer</span> WrestleMania is WWE's biggest annual event, featuring top matches and celebrity appearances.<br>
+                    <span style="color: green;">Significant Event:</span>Women's wrestling has gained prominence in WWE, with stars like Charlotte Flair, Becky Lynch, and Sasha Banks achieving mainstream recognition.<br>
+                    <span style="color: green;">Notable Female Player</span>WWE has a vast global fan base, with millions of viewers and fans in various countries, making it one of the most-watched wrestling promotions in the world.<br> 
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+    {% endif %}
+    
+
+    
+    <script>
+        document.querySelector(".card-container").addEventListener("click", () => {
+            document.querySelector(".card").classList.toggle("is-opened");;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src= "https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body class="font-[Poppins] bg-gradient-to-tl from-yellow-400 via-sky-700 to-yellow-600 bg-cover h-screen">
+    

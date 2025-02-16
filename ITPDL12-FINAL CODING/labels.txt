@@ -1,0 +1,12 @@
+0 Address_for_golf
+1 Drive_for_cricket
+2 Finish_for_golf
+3 Impact_for_golf
+4 legglance_flick_for_cricket
+5 Mid-Backswing_for_golf
+6 Mid-Downswing_for_golf
+7 Mid-Follow-Through_for_golf
+8 pullshot_for_cricket
+9 sweep_for_cricket
+10 Toe-up_for_cricket
+11 Top_for_golf

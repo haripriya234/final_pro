@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+/* SCSS variables - DECLARATIONS START */
+
+/*SCSS not yet incorporated - SCSS try*/
+/*...*/
+
+/*SCSS incoporated - SCSS try*/
+/*bg of button container - essentially page or body*/
+$bg-gradient-color-start: #5c9eff;
+$bg-gradient-color-center: #92beff;
+$bg-gradient-color-end: #c9deff;
+
+/*Font Color*/
+$button-buy-font-color:#fff;
+$button-try-font-color:#fff;
+
+/*Font Color - Hover*/
+$button-buy-font-color-hover:#fff;
+$button-try-font-color-hover:#fff;
+
+
+/*Left-hand side of button has different gradient*/
+$button-buy-gradient-bg-color-start: #fea817;
+$button-buy-gradient-bg-color-end: #c54200;
+
+/*Right-hand side of button has different gradient*/
+$button-try-gradient-bg-color-start: #fec32d;
+$button-try-gradient-bg-color-end: #d86600;
+
+/*Left-hand hover bg gradient*/
+$button-buy-gradient-bg-color-hover-start:#c54200; /*#c54200;*/
+$button-buy-gradient-bg-color-hover-end: #fea817; /* #fea817*/
+
+/*Right-hand hover bg gradient*/
+$button-try-gradient-bg-color-hover-start: #d86600;
+$button-try-gradient-bg-color-hover-end: #fec32d;
+
+/*This is the center word "OR" -- the word BETWEEN the two links*/
+$or-font-color: #833100;
+
+/* SCSS variables - DECLARATIONS END */
+
+body {
+  /* 
+    background: #fff none repeat scroll 0 0;
+    color: #333;
+  */
+   background-image: linear-gradient(top, $bg-gradient-color-start 0%, $bg-gradient-color-center 38%, $bg-gradient-color-end 69%);   
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $bg-gradient-color-start), color-stop(0.375, $bg-gradient-color-center), color-stop(0.6875, $bg-gradient-color-end)); background-image: -moz-linear-gradient(top, $bg-gradient-color-start 0%, $bg-gradient-color-center 38%, $bg-gradient-color-end 69%); background-image: -o-linear-gradient(top, $bg-gradient-color-start 0%, $bg-gradient-color-center 38%, $bg-gradient-color-end 69%); background-image: -ms-linear-gradient(top, $bg-gradient-color-start 0%, $bg-gradient-color-center 38%, $bg-gradient-color-end 69%);    
+font-family: Verdana,Arial,Helvetica,sans-serif;
+}
+
+
+/*Using to center the button for demo*/
+#button-container {
+  height: 100vh;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+ 
+  flex-direction: column;
+  /*color: white;*/
+  /*font-family: Montserrat;*/
+}
+
+html, body, div, span {
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+b, strong {
+    font-weight: bold;
+}
+i, em {
+    font-style: italic;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+.clear {
+    clear: both;
+}
+
+a {
+    color: #dd4631;
+    text-decoration: none;
+    transition: color 0.3s ease-out 0s;
+}
+a:hover {
+    color: #333;
+}
+.buttons {
+    background-color: rgba(30, 30, 30, 0.15);
+    border-radius: 30px;
+    float: left;
+    margin: 12px 0 0;
+    overflow: hidden;
+    padding: 6px;
+    position: relative;
+    width: 366px;
+    z-index: 99;
+}
+/*
+section.section_button {
+    overflow: auto;
+    padding: 0 !important;
+}
+.buttons.button_center {
+    float: none;
+    margin: 0 auto;
+}
+.buttons.button_external {
+    display: block;
+    margin: 15px auto;
+}
+.section_button .buttons.button_right {
+    float: right;
+}
+.section_button .buttons.button_left {
+    float: left;
+}
+*/
+
+
+
+/*This is the word "OR" -- the central word BETWEEN/Associating the two links*/
+.buttons span {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #d86600 1%, #e88c13 100%) repeat scroll 0 0;
+    border-radius: 100em;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3) inset;
+    color: $or-font-color;
+    display: block;
+    float: left;
+    font-family: "Merriweather",serif;
+    font-style: italic;
+    font-weight: 700;
+    height: 32px;
+    margin: 10px 0 0 -16px;
+    padding: 8px 0 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 #f0c08b;
+    width: 32px;
+    z-index: 99;
+}
+
+a.button_buy {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, $button-buy-gradient-bg-color-start 1%, $button-buy-gradient-bg-color-end 100%) repeat scroll 0 0;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
+    color: $button-buy-font-color;
+    display: block;
+    float: left;
+    font-size: 135%;
+    font-weight: bold;
+    height: 51px;
+    padding: 15px 0 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 #af5305;
+    width: 177px;
+    z-index: 20;
+}
+a.button_buy:hover {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, $button-buy-gradient-bg-color-hover-start 0%, $button-buy-gradient-bg-color-hover-end 100%) repeat scroll 0 0;
+    color: $button-buy-font-color-hover;
+}
+a.button_try {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, $button-try-gradient-bg-color-start 0%, $button-try-gradient-bg-color-end 100%) repeat scroll 0 0;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
+    color:   $button-try-font-color;
+    display: block;
+    float: left;
+    font-size: 135%;
+    font-weight: bold;
+    height: 51px;
+    margin-left: -16px;
+    padding: 15px 0 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 #af5305;
+    width: 177px;
+    z-index: 20;
+}
+a.button_try:hover {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, $button-try-gradient-bg-color-hover-start 0%, $button-try-gradient-bg-color-hover-end 99%) repeat scroll 0 0;
+    
+    color: $button-try-font-color-hover;
+}
+
+a.button_buy:activea.button_try:active:active, input.submit:active {
+    box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.4) inset;
+    outline: medium none;
+}
+
+
+
+@media screen and (min-width: 770px) and (max-width: 1005px) {
+
+.buttons {
+    margin: 20px 0 0 20px !important;
+    width: 240px;
+}
+#banner .buttons {
+    margin: 20px 0 0 20px !important;
+}
+#banner.banner_media_left .buttons {
+    margin: 10px 0 0 20px !important;
+}
+#banner .banner_media_full .buttons {
+    margin: 0 0 0 20px;
+}
+
+a.button_buy {
+    border-radius: 25px;
+    /*color: #fff;*/
+    float: none;
+    height: 51px;
+    text-align: center;
+    width: 227px;
+}
+a.button_try {
+    border-radius: 25px;
+    float: none;
+    height: 51px;
+    margin: 5px 0 0;
+    width: 227px;
+}
+.buttons span {
+    display: none;
+}
+} /*media query*/
+
+</style>
+<body style="background-color: #333;">
+    <div id="button-container">
+        <h2 style="color: beige;">Tell me who you are!.</h2>
+      <div class="buttons">
+      <a class="button_buy gradient action_button_1" href="{% url 'usersignup' %}">User</a>
+      <span class="gradient">or</span>
+      <a class="button_try gradient action_button_2" href="{% url 'Authorsignup' %}" >Doctor</a>
+      </div>
+      </div>
+</body>
+</html>

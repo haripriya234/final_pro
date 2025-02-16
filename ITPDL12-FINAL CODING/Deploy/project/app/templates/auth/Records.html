@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class=" w-24 container text-center  px-40 py-20 w-max">
+    <table class=" max-w-max h-60 max-full border border-red-800">
+        <thead>
+        <tr>
+            <th class="antialiased border border-white bg-emerald-200 text-xl">First Name</th>
+            <th class="border border-white bg-emerald-200 text-xl">Last Name</th>
+            <th class="border border-white bg-emerald-200 text-xl">Email</th>
+            <th class="border border-white bg-emerald-200 text-xl">User Image</th>
+            <th class="border border-white bg-emerald-200 text-xl">Age</th>
+            <th class="border border-white bg-emerald-200 text-xl">Country</th>
+            <th class="border border-white bg-emerald-200 text-xl">Street</th>
+            <th class="border border-white bg-emerald-200 text-xl">City</th>
+            <th class="border border-white bg-emerald-200 text-xl">State</th>
+            <th class="border border-white bg-emerald-200 text-xl">Zip_code</th>
+            <th class="border border-white bg-emerald-200 text-xl">View details</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for user in users %}
+        <tr>
+            <td class="border border-white text-green-100 text-xl">{{ user.firstname}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.lastname}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.email}}</td>
+            <td class="border border-white text-green-100 text-xl"><img src="{{ user.user_image.url }}" alt="UserImage"> </td>
+            <td class="border border-white text-green-100 text-xl">{{ user.age}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.country}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.street}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.city}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.state}}</td>
+            <td class="border border-white text-green-100 text-xl">{{ user.zip_code }}</td>
+            <td class="border border-white text-green-100 text-xl"><a href="#">View Details</a></td>
+            
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+https://www.kaggle.com/datasets/aneesh10/cricket-shot-dataset
+CRICKET
+
+https://www.kaggle.com/datasets/marcmarais/golfdb-entire-image
+Golf
+
+https://sites.google.com/view/image-and-video-analysis/iaufd
+football
+
+cricket
+https://www.kaggle.com/datasets/ponrajsubramaniian/sportclassificationdataset
+
+
+100 sports classification
+https://www.kaggle.com/datasets/gpiosenka/sports-classification
+
+
+Workout & Excersises classification
+https://www.kaggle.com/datasets/hasyimabdillah/workoutexercises-images?select=barbell+biceps+curl

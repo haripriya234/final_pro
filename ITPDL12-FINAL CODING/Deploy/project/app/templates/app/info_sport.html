@@ -1,0 +1,202 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<style>
+    .cards-list {
+        z-index: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      
+      .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        cursor: pointer;
+        transition: 0.4s;
+      }
+      
+      .card .card_image {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+      }
+      
+      .card .card_image img {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+        object-fit: cover;
+      }
+      
+      .card .card_title {
+        text-align: center;
+        border-radius: 0px 0px 40px 40px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: -80px;
+        height: 40px;
+      }
+      
+      .card:hover {
+        transform: scale(0.9, 0.9);
+        box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+          -5px -5px 30px 15px rgba(0,0,0,0.22);
+      }
+      
+      .title-white {
+        color: white;
+      }
+      
+      .title-black {
+        color: black;
+      }
+      
+      @media all and (max-width: 500px) {
+        .card-list {
+          /* On small screens, we are no longer using row direction but column */
+          flex-direction: column;
+        }
+      }
+      
+      
+      /*
+      .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        transition: 0.4s;
+      }
+      */
+</style>
+<div>
+  <center><h1 class="text-2xl text-white hover:text-black">Detail information for Each Sports</h1></center>
+</div>
+<div class="cards-list">
+  
+    <div class="card 1">
+      <div class="card_image"> <img src="https://media.istockphoto.com/id/177427917/photo/close-up-of-red-cricket-ball-and-bat-sitting-on-grass.webp?b=1&s=170667a&w=0&k=20&c=WGO8Ikx5NSa1W7KC922jlzgnSq46gnP6G14cGWsvVUw=" /> </div>
+      <div class="card_title title-white">
+        <p><a href="https://www.bcci.tv/">Cricket</a></p>
+      </div>
+    </div>
+    
+      <div class="card 2">
+      <div class="card_image">
+        <img src="https://images.unsplash.com/photo-1595435742656-5272d0b3fa82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dGVubmlzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" />
+        </div>
+      <div class="card_title title-white">
+        <p><a href="https://www.tennis.com/">Tennis</a></p>
+      </div>
+    </div>
+    
+    <div class="card 3">
+      <div class="card_image">
+        <img src="https://images.unsplash.com/photo-1613918702390-48771f69c133?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFkbWludG9uJTIwcmFja2V0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" />
+      </div>
+      <div class="card_title">
+        <p><a href="https://www.badmintonindia.org/">badminton</a></p>
+      </div>
+    </div>
+      
+      <div class="card 4">
+      <div class="card_image">
+        <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2hlc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" />
+        </div>
+      <div class="card_title title-black">
+        <p><a href="https://www.chessbase.in/">Chess</a></p>
+      </div>
+      </div>
+    
+    </div>
+
+
+
+<div class="cards-list">
+  
+    <div class="card 1">
+      <div class="card_image"> <img src="https://images.unsplash.com/photo-1495555687398-3f50d6e79e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJveGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" /> </div>
+      <div class="card_title title-white">
+        <p><a href="https://www.indianboxingcouncil.com/">Boxing</a></p>
+      </div>
+    </div>
+    
+      <div class="card 2">
+      <div class="card_image">
+        <img src="https://wallpapers.com/images/featured/kabaddi-pictures-7awdb9vk9aw87dzo.jpg" />
+        </div>
+      <div class="card_title title-white">
+        <p><a href="https://www.prokabaddi.com/">kabbadi</a></p>
+      </div>
+    </div>
+    
+    <div class="card 3">
+      <div class="card_image">
+        <img src="https://cdn.pixabay.com/photo/2015/01/26/22/40/child-613199_640.jpg" />
+      </div>
+      <div class="card_title">
+        <p><a href="https://www.the-aiff.com/">Football</a></p>
+      </div>
+    </div>
+      
+      <div class="card 4">
+      <div class="card_image">
+        <img src="https://cdn.pixabay.com/photo/2016/02/18/23/27/table-tennis-1208384_640.jpg" />
+        </div>
+      <div class="card_title title-black">
+        <p><a href="https://worldtabletennis.com/home">Table tennis</a></p>
+      </div>
+      </div>
+    
+    </div>
+    <div class="cards-list">
+  
+        <div class="card 1">
+          <div class="card_image"> <img src="https://cdn.pixabay.com/photo/2013/03/21/15/52/basketball-95607_640.jpg" /> </div>
+          <div class="card_title title-white">
+            <p><a href="https://www.usab.com/">Basketball</a></p>
+          </div>
+        </div>
+        
+          <div class="card 2">
+          <div class="card_image">
+            <img src="https://cdn.pixabay.com/photo/2021/07/21/19/59/beach-volleyball-6483897_640.jpg" />
+            </div>
+          <div class="card_title title-white">
+            <p><a href="https://en.volleyballworld.com/">Volley Ball</a> </p>
+          </div>
+        </div>
+        
+        <div class="card 3">
+          <div class="card_image">
+            <img src="https://media.istockphoto.com/id/1148391185/photo/handball-player-holding-a-ball.webp?b=1&s=612x612&w=0&k=20&c=5X2WLGjakx93KCAILKQRm2ZiyCsvHDFtzbuS2TTv0AA=" />
+          </div>
+          <div class="card_title">
+            <p><a href="https://www.ihf.info/">Hand ball</a></p>
+          </div>
+        </div>
+          
+          <div class="card 4">
+          <div class="card_image">
+            <img src="https://static.toiimg.com/thumb/msid-88022501,width-1280,resizemode-4/88022501.jpg" />
+            </div>
+          <div class="card_title title-black">
+            <p><a href="https://www.hockeyindia.org/">Hockey</a></p>
+          </div>
+          </div>
+        
+        </div>
+{% endblock content %}
